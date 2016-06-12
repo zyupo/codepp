@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <!-- upper main stats -->
+    <div id="main-stats">
+        <div class="row-fluid stats-row">
+            <div class="span3 stat">
+                <div class="data">
+                    <span class="number">2457</span>
+                    visits
+                </div>
+                <span class="date">Today</span>
+            </div>
+            <div class="span3 stat">
+                <div class="data">
+                    <span class="number">3240</span>
+                    users
+                </div>
+                <span class="date">February 2014</span>
+            </div>
+            <div class="span3 stat">
+                <div class="data">
+                    <span class="number">322</span>
+                    orders
+                </div>
+                <span class="date">This week</span>
+            </div>
+            <div class="span3 stat last">
+                <div class="data">
+                    <span class="number">$2,340</span>
+                    sales
+                </div>
+                <span class="date">last 30 days</span>
+            </div>
+        </div>
+    </div>
+    <!-- end upper main stats -->
+
+    <div id="pad-wrapper">
+
+        <!-- statistics chart built with jQuery Flot -->
+        <div class="row-fluid chart">
+            <h4>
+                Statistics
+                <div class="btn-group pull-right">
+                    <button class="glow left">DAY</button>
+                    <button class="glow middle active">MONTH</button>
+                    <button class="glow right">YEAR</button>
+                </div>
+            </h4>
+            <div class="span12">
+                <div id="statsChart"></div>
+            </div>
+        </div>
+        <!-- end statistics chart -->
+
+    </div>
+</div>
+{% endblock %}
+
