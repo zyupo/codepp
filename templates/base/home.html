@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+<title>{% block title %}Home{% endblock %}</title>
 {% block content %}
 <div class="container-fluid">
     <!-- upper main stats -->
@@ -56,5 +58,11 @@
 
     </div>
 </div>
+<script src="{% static  "js/jquery.knob.js" %}"></script>
+<script src="{% static "js/jquery.flot.js" %}"></script>
+<script src="{% static "js/jquery.flot.stack.js" %}"></script>
+<script src="{% static "js/jquery.flot.resize.js" %}"></script>
+<script src="{% static "js/base.js" %}"></script>
 {% endblock %}
+
 

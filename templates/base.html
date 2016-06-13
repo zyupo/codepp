@@ -160,21 +160,19 @@
         <i class="icon-chevron-down"></i>
       </a>
       <ul class="submenu">
-        <li><a href="user-list.html">User list</a></li>
-        <li><a href="new-user.html">New user form</a></li>
-        <li><a href="user-profile.html">User profile</a></li>
+        <li><a href="user-list.html">用户列表</a></li>
+        <li><a href="new-user.html">权限管理</a></li>
+        <!--<li><a href="user-profile.html">User profile</a></li>-->
       </ul>
     </li>
     <li>
-      <a class="dropdown-toggle" href="/base/host_list">
+      <a class="dropdown-toggle" href="#">
         <i class="icon-cloud"></i>
         <span>基础信息</span>
         <i class="icon-chevron-down"></i>
       </a>
       <ul class="submenu">
-        <li><a href="/base/host_list">User list</a></li>
-        <li><a href="new-user.html">New user form</a></li>
-        <li><a href="user-profile.html">User profile</a></li>
+        <li><a href="/base/host_list">主机列表</a></li>
       </ul>
     </li>
     <li>
@@ -184,82 +182,57 @@
         <i class="icon-chevron-down"></i>
       </a>
       <ul class="submenu">
-        <li><a href="form-showcase.html">Form showcase</a></li>
-        <li><a href="form-wizard.html">Form wizard</a></li>
+        <li><a href="form-showcase.html">订单状态监控</a></li>
+        <li><a href="form-wizard.html">推送状态监控</a></li>
       </ul>
     </li>
     <li>
-      <a href="gallery.html">
-        <i class="icon-picture"></i>
-        <span>Gallery</span>
-      </a>
-    </li>
-    <li>
-      <a href="calendar.html">
-        <i class="icon-calendar-empty"></i>
-        <span>Calendar</span>
-      </a>
-    </li>
-    <li>
-      <a href="tables.html">
-        <i class="icon-th-large"></i>
-        <span>Tables</span>
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-toggle ui-elements" href="#">
-        <i class="icon-code-fork"></i>
-        <span>UI Elements</span>
+      <a class="dropdown-toggle" href="#">
+        <i class="icon-fire"></i>
+        <span>Beta环境</span>
         <i class="icon-chevron-down"></i>
       </a>
       <ul class="submenu">
-        <li><a href="ui-elements.html">UI Elements</a></li>
-        <li><a href="icons.html">Icons</a></li>
+        <li><a href="form-showcase.html">订单状态监控</a></li>
+        <li><a href="form-wizard.html">推送状态监控</a></li>
       </ul>
     </li>
     <li>
-      <a href="personal-info.html">
-        <i class="icon-cog"></i>
-        <span>My Info</span>
+      <a class="dropdown-toggle" href="#">
+        <i class="icon-star-empty"></i>
+        <span>GAMMA环境</span>
+        <i class="icon-chevron-down"></i>
       </a>
+      <ul class="submenu">
+        <li><a href="form-showcase.html">订单状态监控</a></li>
+        <li><a href="form-wizard.html">推送状态监控</a></li>
+      </ul>
     </li>
     <li>
+      <a class="dropdown-toggle" href="#">
+        <i class="icon-flag"></i>
+        <span>线上环境</span>
+        <i class="icon-chevron-down"></i>
+      </a>
       <ul class="submenu">
-        <li><a href="code-editor.html">Code editor</a></li>
-        <li><a href="grids.html">Grids</a></li>
-        <li><a href="signin.html">Sign in</a></li>
-        <li><a href="signup.html">Sign up</a></li>
+        <li><a href="form-showcase.html">订单状态监控</a></li>
+        <li><a href="form-wizard.html">推送状态监控</a></li>
       </ul>
     </li>
   </ul>
 </div>
+
+<script src="{% static "js/jquery-latest.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static  "js/jquery-ui-1.10.2.custom.min.js" %}"></script>
+<script src="{% static "js/theme.js" %}"></script>
 
 <div class="content">
   {% block content %}{% endblock %}
 </div>
 <!-- end sidebar -->
 
-<!--<div class="container">-->
-  <!--<div class="row">-->
-    <!--<div class="col-lg-9">-->
-      <!--{% block homeinfo %}{% endblock %}-->
-    <!--</div>-->
-    <!--&lt;!&ndash;<div class="col-lg-3">&ndash;&gt;-->
-      <!--&lt;!&ndash;{% block rightside %}{% endblock %}&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</div>-->
-<!--</div>-->
 
-<script src="{% static "js/jquery-latest.js" %}"></script>
-<script src="{% static "js/bootstrap.min.js" %}"></script>
-<script src="{% static  "js/jquery-ui-1.10.2.custom.min.js" %}"></script>
-<!-- knob -->
-<script src="{% static  "js/jquery.knob.js" %}"></script>
-<!-- flot charts -->
-<script src="{% static "js/jquery.flot.js" %}"></script>
-<script src="{% static "js/jquery.flot.stack.js" %}"></script>
-<script src="{% static "js/jquery.flot.resize.js" %}"></script>
-<script src="{% static "js/theme.js" %}"></script>
-<script src="{% static "js/base.js" %}"></script>
+
 </body>
 </html>
