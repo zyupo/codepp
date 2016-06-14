@@ -1,8 +1,7 @@
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import auth
-
-
+from django.contrib.auth.models import User ,UserManager
 
 #登录
 def login(request):
@@ -30,3 +29,13 @@ def login(request):
 #     auth.logout(request)
 #     return HttpResponseRedirect("/book/login/")
 #     # return render_to_response('login.html')
+
+
+
+
+def user_list(request):
+    user_info = User.objects.all()
+    return render_to_response('users/user_list.html',{'user_info':user_info})
+
+def add_user(request):
+    UserManager.create_user()

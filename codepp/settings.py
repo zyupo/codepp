@@ -82,7 +82,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'codepp',
+        'NAME': 'mops',
         'USER': 'siteuser',
         'PASSWORD':'siteuser123',
         'HOST':'192.168.1.218',
