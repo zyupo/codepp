@@ -24,12 +24,12 @@
     <![endif]-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
-<form id="yjzops" name="yjzops" action="" method="post" class="form-horizontal">
 <div class="row-fluid login-wrapper">
         <img class="logo" src="{% static "img/logo-white.png" %}" />
         <div class="span4 box">
             <div class="content-wrap">
-                <h6>欢迎使用 MOPS</h6>
+                <h6>Welcome to MOPS</h6>
+                <form id="yjzops" name="mpos" action="" method="post" class="form-horizontal">
                 <input class="span12" name="username" type="text" placeholder="用户名" />
                 <input class="span12" name="password" type="password" placeholder="密码" />
                 <!--<a href="#" class="forgot">Forgot password?</a>-->
@@ -41,9 +41,9 @@
                     <label for="remember-me">Remember me</label>
                 </div>
                 <button class="btn-glow primary login"  type="submit">登 录</button>
+            </form>
             </div>
         </div>
 </div>
-</form>
 </body>
 </html>
