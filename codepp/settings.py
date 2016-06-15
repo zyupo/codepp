@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'mops',
         'USER': 'siteuser',
         'PASSWORD':'siteuser123',
-        'HOST':'192.168.1.218',
+        'HOST':'192.168.1.9',
         'PORT':'3306',
 
     }
