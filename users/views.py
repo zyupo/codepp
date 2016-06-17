@@ -3,10 +3,13 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import auth,sessions
 from django.contrib.auth.models import User ,UserManager
 from django.contrib.auth.decorators import login_required
+from ..codepp.common import *
+
 
 #登录
-#@login_required(login_url='/base/home/')
 def login(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/base/home')
     if request.method != 'POST':
         return render_to_response('login.html')
     else:
@@ -30,11 +33,11 @@ def login(request):
 #@login_required(login_url='/book/login/')
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect('/users/login')
+    return HttpResponseRedirect('/base/home')
 
 
 
-
+@require_role()
 def user_list(request):
     user_info = User.objects.all()
     return render_to_response('users/user_list.html',{'user_info':user_info})

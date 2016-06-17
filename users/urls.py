@@ -18,8 +18,8 @@ from . import views
 
 urlpatterns = [
     url(r'^user_list/$', views.user_list),
-    url(r'^logout/$', views.logout),
-    url(r'^login/$', views.login),
+    #url(r'^logout/$', views.logout, name='logout'),
+    # url(r'^login/$', views.login, name='logout'),
     # url(r'^search/$', views.search),
     #url(r'^(?P<question_id>[0-9]+)/$',views.detail,name='detail'),
     #url(r'^(?P<question_id>[0-9]+)/results/$',views.results,name='results'),
