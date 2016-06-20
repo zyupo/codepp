@@ -3,8 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import auth,sessions
 from django.contrib.auth.models import User ,UserManager
 from django.contrib.auth.decorators import login_required
-from ..codepp.common import *
-
+from codepp.common import *
 
 #登录
 def login(request):
@@ -30,7 +29,6 @@ def login(request):
 
 
 
-#@login_required(login_url='/book/login/')
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/base/home')
@@ -43,6 +41,21 @@ def user_list(request):
     return render_to_response('users/user_list.html',{'user_info':user_info})
 
 
+@require_role()
+def user_edit(request):
+    if request.method == 'GET':
+        user_id = request.GET.get('id','')
+        if not user_id:
+            return HttpResponseRedirect('/base/home')
 
+        user = User.objects.get(id=user_id)
+    return render_to_response('users/user_edit.html',{'user':user})
+
+
+
+
+
+
+@require_role()
 def add_user(request):
     UserManager.create_user()

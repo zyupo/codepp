@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+<title>{% block title %}主机列表{% endblock %}</title>
+{% block content %}
+{% load static %}
+<link href="{% static "css/compiled/personal-info.css"  %}" type="text/css" rel="stylesheet" />
+<div class="content wide-content">
+
+    <div class="container-fluid">
+            <div class="settings-wrapper" id="pad-wrapper">
+                    <div class="span7 personal-info">
+
+                    <h5 class="personal-title">Personal info</h5>
+
+                    <form />
+                        <div class="field-box">
+                            <label>First name:</label>
+                            <input class="span5 inline-input" type="text" value="Alejandra" />
+                        </div>
+                        <div class="field-box">
+                            <label>Last name:</label>
+                            <input class="span5 inline-input" type="text" value="Galvan" />
+                        </div>
+                        <div class="field-box">
+                            <label>Company:</label>
+                            <input class="span5 inline-input" type="text" value="Design Co." />
+                        </div>
+                        <div class="field-box">
+                            <label>Email:</label>
+                            <input class="span5 inline-input" type="text" value="alejandra@design.com" />
+                        </div>
+                        <div class="field-box">
+                            <label>Time Zone:</label>
+                            <div class="ui-select">
+                                <select id="user_time_zone" name="user[time_zone]">
+                                    <option value="Hawaii" />(GMT-10:00) Hawaii
+                                    <option value="Alaska" />(GMT-09:00) Alaska
+                                    <option value="Pacific Time (US &amp; Canada)" />(GMT-08:00) Pacific Time (US &amp; Canada)
+                                    <option value="Arizona" />(GMT-07:00) Arizona
+                                    <option value="Mountain Time (US &amp; Canada)" />(GMT-07:00) Mountain Time (US &amp; Canada)
+                                    <option value="Central Time (US &amp; Canada)" selected="selected" />(GMT-06:00) Central Time (US &amp; Canada)
+                                    <option value="Eastern Time (US &amp; Canada)" />(GMT-05:00) Eastern Time (US &amp; Canada)
+                                    <option value="Indiana (East)" />(GMT-05:00) Indiana (East)
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-box">
+                            <label>Username:</label>
+                            <input class="span5 inline-input" type="text" value="alegalvan" />
+                        </div>
+                        <div class="field-box">
+                            <label>Password:</label>
+                            <input class="span5 inline-input" type="password" value="blablablabla" />
+                        </div>
+                        <div class="field-box">
+                            <label>Confirm password:</label>
+                            <input class="span5 inline-input" type="password" value="blablablabla" />
+                        </div>
+                        <div class="span6 field-box actions">
+                            <input type="button" class="btn-glow primary" value="Save Changes" />
+                            <span>OR</span>
+                            <input type="reset" value="Cancel" class="reset" />
+                        </div>
+                    </form>
+                </div>
+</div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

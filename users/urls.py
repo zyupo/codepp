@@ -17,7 +17,8 @@ from django.conf.urls import  url
 from . import views
 
 urlpatterns = [
-    url(r'^user_list/$', views.user_list),
+    url(r'^user_list/$', views.user_list,name='user_list'),
+    url(r'^user_edit/$', views.user_edit,name='user_edit'),
     #url(r'^logout/$', views.logout, name='logout'),
     # url(r'^login/$', views.login, name='logout'),
     # url(r'^search/$', views.search),

@@ -110,7 +110,7 @@
                 </td>
                 {% endif %}
                 <td class="align-left">
-                    <a href="#">Edit</a>
+                    <a href="{% url 'user_edit' %}?id={{ u.id }}">Edit</a>
                     <a href="#">Delete</a>
                 </td>
             </tr>
