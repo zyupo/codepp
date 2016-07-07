@@ -49,7 +49,32 @@ def user_edit(request):
             return HttpResponseRedirect('/base/home')
 
         user = User.objects.get(id=user_id)
-    return render_to_response('users/user_edit.html',{'user':user})
+        return render_to_response('users/user_edit.html',{'user':user})
+    else:
+        user_id = request.GET.get('id','')
+        username = request.GET.get('username','')
+        last_name = request.GET.get('last_name')
+        password = request.GET.get('password','')
+        email = request.GET.get('email','')
+        active = request.GET.get('active','')
+        is_active = True if '1' in active else False
+
+
+        print(username);exit()
+        if user_id:
+            user = User.objects.get(id=user_id)
+            user_query = User.objects.filter(id=user_id)
+            user_query.update(username=username,last_name=last_name,email=email,is_active=is_active)
+            if password != '':
+                password = user.set_password(password)
+            user.save()
+            return HttpResponseRedirect('/users/user_list')
+        else:
+            return HttpResponseRedirect('user_list')
+
+
+
+
 
 
 

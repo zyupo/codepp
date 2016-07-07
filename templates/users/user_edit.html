@@ -2,72 +2,100 @@
 <title>{% block title %}主机列表{% endblock %}</title>
 {% block content %}
 {% load static %}
-<link href="{% static "css/compiled/personal-info.css"  %}" type="text/css" rel="stylesheet" />
-<div class="content wide-content">
+<link href="{% static "css/compiled/form-showcase.css"  %}" type="text/css" rel="stylesheet" />
+<!--<link href="{% static "css/compiled/form-wizard.css"  %}" type="text/css" rel="stylesheet" />-->
+<div class="wide-content">
 
     <div class="container-fluid">
-            <div class="settings-wrapper" id="pad-wrapper">
-                    <div class="span7 personal-info">
-
-                    <h5 class="personal-title">Personal info</h5>
-
-                    <form />
-                        <div class="field-box">
-                            <label>First name:</label>
-                            <input class="span5 inline-input" type="text" value="Alejandra" />
-                        </div>
-                        <div class="field-box">
-                            <label>Last name:</label>
-                            <input class="span5 inline-input" type="text" value="Galvan" />
-                        </div>
-                        <div class="field-box">
-                            <label>Company:</label>
-                            <input class="span5 inline-input" type="text" value="Design Co." />
-                        </div>
-                        <div class="field-box">
-                            <label>Email:</label>
-                            <input class="span5 inline-input" type="text" value="alejandra@design.com" />
-                        </div>
-                        <div class="field-box">
-                            <label>Time Zone:</label>
-                            <div class="ui-select">
-                                <select id="user_time_zone" name="user[time_zone]">
-                                    <option value="Hawaii" />(GMT-10:00) Hawaii
-                                    <option value="Alaska" />(GMT-09:00) Alaska
-                                    <option value="Pacific Time (US &amp; Canada)" />(GMT-08:00) Pacific Time (US &amp; Canada)
-                                    <option value="Arizona" />(GMT-07:00) Arizona
-                                    <option value="Mountain Time (US &amp; Canada)" />(GMT-07:00) Mountain Time (US &amp; Canada)
-                                    <option value="Central Time (US &amp; Canada)" selected="selected" />(GMT-06:00) Central Time (US &amp; Canada)
-                                    <option value="Eastern Time (US &amp; Canada)" />(GMT-05:00) Eastern Time (US &amp; Canada)
-                                    <option value="Indiana (East)" />(GMT-05:00) Indiana (East)
-                                </select>
+        <div id="pad-wrapper" class="form-page">
+            <div class="row-fluid form-wrapper">
+                <!-- left column -->
+                <div class="span8 column">
+                    <form id="userForm"  method="post" action="{% url 'user_edit' %}?id={{ user.id }}" />
+                    <div class="field-box">
+                        <label for="username" class="col-sm-2 control-label">用户名 <span class="text-danger">*</span></label>
+                        <input class="span8" id="username" name="username" type="text" value="{{ user.username }}" />
+                    </div>
+                    <div class="field-box">
+                        <label for="name" class="col-sm-2 control-label">姓名 :</label>
+                        <input class="span8" id="last_name" name="last_name" type="text" value="{{ user.last_name }}" />
+                    </div>
+                    <div class="field-box">
+                        <label>密码 :</label>
+                        <input class="span8" id="password" name="password" type="password" placeholder="设置密码" />
+                    </div>
+                    <div class="field-box">
+                        <label>确认密码 :</label>
+                        <input class="span8" id="password2" name="password2" type="password" placeholder="确认密码" />
+                        <!--<span class="alert-msg"><i class="icon-ok-sign"></i></span>-->
+                        <!--<span class="alert alert-info"><i class="icon-exclamation-sign">登陆系统的密码（空白表示不修改密码）</i></span>-->
+                        <div class="alert alert-info">
+                                <i class="icon-exclamation-sign"></i>
+                                登录密码，空白表示不修改密码。
                             </div>
-                        </div>
-                        <div class="field-box">
-                            <label>Username:</label>
-                            <input class="span5 inline-input" type="text" value="alegalvan" />
-                        </div>
-                        <div class="field-box">
-                            <label>Password:</label>
-                            <input class="span5 inline-input" type="password" value="blablablabla" />
-                        </div>
-                        <div class="field-box">
-                            <label>Confirm password:</label>
-                            <input class="span5 inline-input" type="password" value="blablablabla" />
-                        </div>
-                        <div class="span6 field-box actions">
-                            <input type="button" class="btn-glow primary" value="Save Changes" />
-                            <span>OR</span>
-                            <input type="reset" value="Cancel" class="reset" />
-                        </div>
+                    </div>
+
+                    <!--<span class="help-block m-b-none">-->
+                    <!--登陆web的密码（空白表示不修改密码）-->
+                    <!--</span>-->
+                    <div class="field-box">
+                        <label>Email :</label>
+                        <input class="span8" id="email" name="email" type="text" value="{{ user.email }}"/>
+                    </div>
+                    <div class="field-box">
+                        <label>激活 :</label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="active" value="1" {%if user.is_active  %} checked {% endif %} /> 启用
+                        </label>
+                    </div>
+                    <div class="span6 field-box actions">
+                        <input type="submit" class="btn-glow primary" value="确认保存" />
+                        <span>OR</span>
+                        <!--<input type="reset" value="取消修改" class="reset" />-->
+                        <a href="{% url 'user_list' %}">取消修改</a>
+                    </div>
                     </form>
                 </div>
-</div>
+            </div>
         </div>
+
+
     </div>
+</div>
 
+<script>
+$('#userForm').validator({
+    timely: 2,
+    theme: "yellow_right_effect",
+    rules: {
+        check_pass: [/^\w+$/, '数字和字符']
+    },
+    fields: {
+        "username": {
+            rule: "required",
+            tip: "输入用户名",
+            ok: "",
+            msg: {required: "必须填写!"}
+        },
+        "name": {
+            rule: "required",
+            tip: "姓名",
+            ok: "",
+            msg: {required: "必须填写"}
+        },
+        "email": {
+            rule: "required",
+            tip: "Email",
+            ok: "",
+            msg: {required: "必须填写"}
+        },
+        valid: function (form) {
+            form.submit();
+        }
+    }
+});
 
-
+</script>
 
 
 
