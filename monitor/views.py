@@ -1,5 +1,6 @@
 from django.shortcuts import render,render_to_response
 from django.contrib.auth.decorators import login_required
+from .models import Monitor_server
 # Create your views here.
 
 @login_required(login_url='/login')
