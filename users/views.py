@@ -60,7 +60,7 @@ def user_edit(request):
         is_active = True if '1' in active else False
 
 
-        print(username);exit()
+        # print(username);exit()
         if user_id:
             user = User.objects.get(id=user_id)
             user_query = User.objects.filter(id=user_id)

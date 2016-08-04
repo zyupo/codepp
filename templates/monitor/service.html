@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+<title>{% block title %}主机列表{% endblock %}</title>
+{% block content %}
+    {% load static %}
+    <link href="{% static "css/compiled/tables.css"  %}" type="text/css" rel="stylesheet" />
+    <link href="{% static "css/compiled/user-list.css"  %}" type="text/css" rel="stylesheet" />
+    <!-- products table-->
+    <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
+    <div id="pad-wrapper">
+    <div class="table-wrapper products-table">
+        <div class="row-fluid head">
+            <div class="span12">
+                <ol class="breadcrumb">
+                    <li><a href="/base/home">Home</a></li>
+                    <li><a href="#">/ 基础信息</a></li>
+                    <li class="active">/ 主机列表</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row-fluid filter-block">
+            <div class="pull-left">
+                <div class="ui-select">
+                    <select>
+                        <option />SOA组服务器
+                        <option />前端服务器组
+                        <option />GAMMA服务器组
+                    </select>
+                </div>
+                服务器IP：<input type="text" class="form-control" />
+                <a class="btn-flat btn-primary "> 查询</a>
+            </div>
+            <div class="pull-right">
+                {#                <a class="btn-flat pull-right success " onclick="showCreateserverMonitor();"> 添加服务</a>#}
+                <a class="btn-flat pull-right success " data-toggle="modal" data-target="#myModal"> 添加服务</a>
+            </div>
+        </div>
+
+        <!-- Users table -->
+        <div class="row-fluid table">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="span1 sortable">
+                        监控服务
+                    </th>
+                    <th class="span1 sortable">
+                        <span class="line"></span>地址
+                    </th>
+                    <th class="span1 sortable">
+                        <span class="line"></span>端口
+                    </th>
+
+                    <th class="span1 sortable">
+                        <span class="line"></span>状态
+                    </th>
+                    <th class="span1 sortable">
+                        <span class="line"></span>操作
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- row -->
+                <tr class="first">
+                    <td>
+                        <a href="user-profile.html" class="name">Redis</a>
+                    </td>
+                    <td>
+                        10.10.10.1
+                    </td>
+                    <td class="align-left">
+                        6379
+                    </td>
+                    <td>
+                        <span class="label btn-success">正常</span>
+                    </td>
+                    <td class="align-left">
+                        <a href="#">修改</a>
+                        | <a href="#">监控图表</a>
+                        | <a href="#">报警规则</a>
+                    </td>
+                </tr>
+                <!-- row -->
+                <tr>
+                    <td>
+                        <a href="user-profile.html" class="name">CGI1</a>
+                    </td>
+                    </td>
+                    <td>
+                        10.10.10.2
+                    </td>
+                    <td class="align-left">
+                        80
+                    </td>
+                    <td>
+                        <span class="label">异常</span>
+                    </td>
+                    <td class="align-left">
+                        <a href="#">修改</a>
+                        | <a href="#">监控图表</a>
+                        | <a href="#">报警规则</a>
+                    </td>
+                </tr>
+                <!-- row -->
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination pull-right">
+            <ul>
+                <li><a href="#">&#8249;</a></li>
+                <li><a class="active" href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&#8250;</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end products table -->
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+{#                <form id="addserver"  method="post" action="addServermonitor" />#}
+                <h3 class="modal-title" id="myModalLabel">
+                    添加服务监控
+                </h3>
+            </div>
+{#            <form id="userForm"  method="post" action="{% url 'add_server_monitor' %}" />#}
+            <div class="form-group">
+                <label class="col-sm-3 control-label ng-binding">监控服务:</label>
+                <input id="server_name" name="username" class="" type="text"  />
+            </div>
+            <div >
+                服务地址:<input id="server_ip" name="last_name" type="text" />
+            </div>
+            <div >
+                端口:<input id="server_port" name="last_name" type="text" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="addserver" class="btn btn-primary" >确定</button>
+            </div>
+{#            </form>#}
+        </div><!-- /.modal-content -->
+
+
+    </div><!-- /.modal -->
+</div>
+
+
+<script>
+    $(function() {
+        $("#addserver").click(function(){
+            var server_name = $("#server_name").val();
+            var server_ip = $("#server_ip").val();
+            var server_port = $("#server_port").val();
+            $.ajax({
+                type:"POST",
+                url:"{% url 'add_server_monitor' %}",
+                contentType: "application/json; charset=utf-8",
+                data:"server_name=" + server_name + "&server_ip=" + server_name +"&server_port=" + server_name,
+                dataType: "json",
+                    success: function(data) {
+                //shuaxin
+            },
+                error:function (err) {
+                alert(err);
+            }
+        })
+        });
+    });
+
+
+    $("#addServerMonitor2").click(function () {
+        $.ajax({
+            type:"POST",
+{#            url:"{% url /monitor/addServermonitor %}",#}
+            url:"/monitor/addServermonitor",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                //shuaxin
+            },
+            error:function (err) {
+                alert(err);
+            }
+        })
+    })
+
+
+
+</script>
+{% endblock %}
+
