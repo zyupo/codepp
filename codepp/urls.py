@@ -20,7 +20,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^addServermonitor/$', 'monitor.views.addServermonitor',name='add_server_monitor'),
     url(r'^$', 'base.views.home',name='home'),
     url(r'^login', 'users.views.login',name='login'),
     url(r'^logout/$', 'users.views.logout', name='logout'),
